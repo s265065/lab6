@@ -5,18 +5,22 @@ import lab.json.*;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Hat  implements Serializable {
+public class Hat  implements Serializable, Comparable<Hat> {
     public String color;
     public int size;
     public int num;
     private Date createdDate =new Date();
     public Thing[] content;
 
+    public int getNum(){return num;}
+
     public String getColor(){
         StringBuilder result = new StringBuilder();
-        result.append("шляпа с цветом"+this.color);
+        result.append("шляпа с цветом "+this.color);
         return result.toString();
     }
+    @Override
+    public int compareTo(Hat o){return getNum() - o.getNum();}
 
     /**
      * Добавляет предмет в шляпу
